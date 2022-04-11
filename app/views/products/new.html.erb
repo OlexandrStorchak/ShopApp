@@ -1,0 +1,10 @@
+Add new product
+<%=form_with model: @product do |p|%>
+<%=p.label :product, "Product name"%>
+<%=p.text_field :p_name %>
+<%=p.label :product, "Product description"%>
+<%=p.text_field :p_description %>
+<%=p.label :product, "Product price"%>
+<%=p.text_field :p_price %>
+<%=p.submit "Save"%>
+<%end%>

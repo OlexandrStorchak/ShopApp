@@ -1,0 +1,3 @@
+<%@products.each do |p| %>
+  <%=p.p_name%><%=link_to "Show!", product_path(p.id)%><br>
+<% end %>
