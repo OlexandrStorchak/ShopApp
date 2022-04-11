@@ -27,18 +27,17 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(get_product_id)
     if @product = Product.update(get_product_params)
-      redirect_to product_path, notice: 'Edited'
+      redirect_to product_path, notice: "Edited"
     else
       redirect_to edit_product_path
     end
-    def destroy
-        @product = Product.find(get_product_id)
-        if @product.destroy
-            redirect_to product_path
-        else
-            redirect_to product_path, notice: 'msg'
-        end
+  end
 
+  def destroy
+    @product = Product.find(get_product_id)
+    if @product.destroy
+      redirect_to products_path, status: :see_other
+    else
     end
   end
 
