@@ -26,8 +26,8 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(get_product_id)
-    if @product = Product.update(get_product_params)
-      redirect_to product_path, notice: "Edited"
+    if @product.update(get_product_params)
+      redirect_to product_path
     else
       redirect_to edit_product_path
     end
