@@ -1,8 +1,22 @@
-Show product<br>
-<%=@product.id%>
-<%=@product.p_name%>
-<%=@product.p_description%>
-<%=@product.p_price%>
-<%=link_to "Edit product",edit_product_path , class:"btn btn-primary"%>
-<%= link_to 'Delete product', product_path(@product),
+<div class="card col-5">
+  <div class="card img">
+    <%=image_tag("prod_def")%>
+  </div>
+  <div class="card-body">
+    <div class="card-title h3 text-center">
+      <div class="h6 text-start">
+        ID :  <%=@product.id%>
+      </div>
+      <%=@product.p_name%>
+    </div>
+    <div class="text-center h5">
+      <%=@product.p_description%>
+    </div>
+    <div class="text-end">
+      <%=@product.p_price%>
+    </div>
+  </div>
+  <%=link_to "Edit product",edit_product_path , class:"btn btn-primary"%>
+  <%= link_to 'Delete product', product_path(@product),
   data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},class:"btn btn-danger" %>
+</div>
