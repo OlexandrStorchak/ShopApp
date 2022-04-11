@@ -1,0 +1,11 @@
+Show product<br>
+<%if !@msg.nil?%>
+<%=Updated%>
+<%end%>
+<%=@product.id%>
+<%=@product.p_name%>
+<%=@product.p_description%>
+<%=@product.p_price%>
+<%=link_to "Edit product",edit_product_path , class:"btn btn-primary"%>
+<%= link_to 'Delete', product_path,
+  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},class:"btn btn-danger" %>
