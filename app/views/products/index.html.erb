@@ -1,3 +1,15 @@
-<%@products.each do |p| %>
-  <%=p.p_name%><%=link_to "Show!", product_path(p.id)%><br>
-<% end %>
+<div class="container">
+  <%@products.each do |p| %>
+    <div class="card col-3 d-inline-block">
+      <div class="card img">
+        <%=image_tag("prod_def")%>
+      </div>
+      <div class="card-body">
+        <div class="card-title text-truncate h4">
+          <%=link_to "#{p.p_name}", product_path(p.id), 
+                      class:'text-decoration-none text-uppercase stretched-link'%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
