@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  before_action :set_product, only: %i[show edit update destroy]
+
   def index
     @products = Product.all
   end
@@ -17,15 +20,12 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(get_product_id)
   end
 
   def edit
-    @product = Product.find(get_product_id)
   end
 
   def update
-    @product = Product.find(get_product_id)
     if @product.update(get_product_params)
       redirect_to product_path
     else
@@ -34,20 +34,26 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(get_product_id)
     if @product.destroy
       redirect_to products_path, status: :see_other
     else
     end
   end
 
+  def product_not_found
+  end
+
   private
+
+  def not_found
+    redirect_to product_not_found_path
+  end
 
   def get_product_params
     params.require(:product).permit(:p_name, :p_description, :p_price)
   end
 
-  def get_product_id
-    params.require(:id)
+  def set_product
+    @product = Product.find(params.require(:id))
   end
 end
