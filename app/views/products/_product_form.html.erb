@@ -1,7 +1,7 @@
 <div class="col-4 p-3 mt-5 shadow">
   <%=form_with model: @product do |p|%>
     <div class="mb-3 ">
-      <%=p.label :product, "Product name",class: 'form-label h5'%>
+      <%=p.label :product,"Product name",class: 'form-label h5'%>
       <%=p.text_field :p_name, class: 'form-control' %>
     </div>
     <div class="mb-3">
