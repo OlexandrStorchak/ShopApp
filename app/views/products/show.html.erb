@@ -12,7 +12,7 @@
       <%=@product.p_description%>
     </div>
     <div class="text-end">
-      <%=@product.p_price%>
+      <%="%.2f" % @product.p_price%>
     </div>
   </div>
   <%=link_to "Edit product",edit_product_path , class:"btn btn-primary"%>
