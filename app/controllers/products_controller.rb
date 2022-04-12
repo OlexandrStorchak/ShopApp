@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(get_product_params)
-    if @product.save
+    if @product.save!
       redirect_to product_path @product
     else
       redirect_to new_product_path
