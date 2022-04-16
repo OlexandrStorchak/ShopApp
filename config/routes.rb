@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root "pages#index"
   resources :products
   get "/product/not_found", to: "products#product_not_found"
+  resources :product_categories do
+    resources :products
+  end
 end

@@ -1,0 +1,11 @@
+<div class="p-3 mt-5 shadow col-md-12 col-lg-10 col-xl-8">
+  <%=form_with model: @category do |c|%>
+    <div class="mb-3 ">
+      <%=c.label :category,"Category name",class: 'form-label h5'%>
+      <%=c.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%=c.submit "Save",class: 'btn btn-primary col-12'%>
+    </div>
+  <%end%>
+</div>
