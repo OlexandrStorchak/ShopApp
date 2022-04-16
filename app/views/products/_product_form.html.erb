@@ -9,6 +9,10 @@
       <%=p.text_field :p_description, class: 'form-control' %>
     </div>
     <div class="mb-3">
+      <%=p.label :product, "Product category",class: 'form-label h5'%>
+      <%=p.text_field :category_id, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
       <%=p.label :product, "Product price",class: 'form-label h5'%>
       <%=p.text_field :p_price, class: 'form-control' %>
     </div>

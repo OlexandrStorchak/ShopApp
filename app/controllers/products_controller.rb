@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    
   end
 
   def edit
@@ -38,7 +39,7 @@ class ProductsController < ApplicationController
   def destroy
     if @product.destroy
       redirect_to products_path, status: :see_other
-      flash[:notice] = "Product successfully deleted"
+      flash[:delete] = "Product successfully deleted"
     else
     end
   end
@@ -53,7 +54,7 @@ class ProductsController < ApplicationController
   end
 
   def get_product_params
-    params.require(:product).permit(:p_name, :p_description, :p_price)
+    params.require(:product).permit(:p_name, :p_description, :p_price, :category_id)
   end
 
   def set_product
