@@ -12,10 +12,13 @@
       <%=@product.p_description%>
     </div>
     <div class="text-end">
-      <%=@product.p_price%>
+      $ <%="%.2f" % @product.p_price%>
+    </div>
+    <div class="text-end">
+      Cat : <%=@category.name%>
     </div>
   </div>
-  <%=link_to "Edit product",edit_product_path , class:"btn btn-primary"%>
+  <%=link_to "Edit product",edit_product_path , class:"btn btn-primary mt-2"%>
   <%= link_to 'Delete product', product_path(@product),
-  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},class:"btn btn-danger" %>
+  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},class:"btn btn-danger mt-2" %>
 </div>

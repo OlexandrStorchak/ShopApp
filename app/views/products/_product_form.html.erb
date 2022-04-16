@@ -9,6 +9,12 @@
       <%=p.text_field :p_description, class: 'form-control' %>
     </div>
     <div class="mb-3">
+      <%=p.label :product, "Product category",class: 'form-label h5'%>
+      <%=p.collection_select :product_category_id,ProductCategory.all, :id, :name %>
+    </div>
+    <div>
+    </div>
+    <div class="mb-3">
       <%=p.label :product, "Product price",class: 'form-label h5'%>
       <%=p.text_field :p_price, class: 'form-control' %>
     </div>
