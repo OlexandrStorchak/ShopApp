@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
     @product = Product.new(get_product_params)
     if @product.save!
       redirect_to product_path @product
+      flash[:notice] = "Product successfully created"
     else
       redirect_to new_product_path
     end
@@ -28,6 +29,7 @@ class ProductsController < ApplicationController
   def update
     if @product.update(get_product_params)
       redirect_to product_path
+      flash[:notice] = "Product successfully updated"
     else
       redirect_to edit_product_path
     end
@@ -36,6 +38,7 @@ class ProductsController < ApplicationController
   def destroy
     if @product.destroy
       redirect_to products_path, status: :see_other
+      flash[:notice] = "Product successfully deleted"
     else
     end
   end
