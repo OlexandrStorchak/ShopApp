@@ -1,7 +1,8 @@
 <div class="row g-3 mt-3 m-4">
   <%@categories.each do |cat|%>
-  <div class="card">
-    <%=cat.name%><%=link_to "Show",product_category_path(cat)%><%=link_to "Edit",edit_product_category_path(cat)%>
+    <div class="card col-md-6 col-lg-4 col-xl-3 p-1" style="min-width:300px">
+      <%=cat.products.count%> products in 
+      <%=cat.name%><%=link_to "",product_category_path(cat), class: 'stretched-link'%>
     </div>
   <%end%>
 </div>
