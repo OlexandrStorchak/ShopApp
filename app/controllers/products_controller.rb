@@ -12,16 +12,16 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(get_product_params)
-    if @product.save!
+    if @product.save
       redirect_to product_path @product
       flash[:notice] = "Product successfully created"
     else
       redirect_to new_product_path
+      flash[:error] = @product.errors.full_messages
     end
   end
 
   def show
-    
   end
 
   def edit
@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
       redirect_to product_path
       flash[:notice] = "Product successfully updated"
     else
+      flash[:error] = @product.errors.full_messages
       redirect_to edit_product_path
     end
   end
@@ -45,6 +46,9 @@ class ProductsController < ApplicationController
   end
 
   def product_not_found
+  end
+
+  def search
   end
 
   private
