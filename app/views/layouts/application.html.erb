@@ -62,6 +62,7 @@
         </div>
         <div class="offcanvas-body">
           <div>
+            <%=link_to 'Add category', new_product_category_path, class: ' btn btn-outline-secondary'%>
             <ul class="list-group">
               <%@categories_list.each do |cat|%>
                 <li class="list-group-item btn-outline-secondary">
