@@ -51,8 +51,8 @@
       <% if flash[:notice] %>
         <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
       <% end %>
-      <% if flash[:delete] %>
-        <div class="alert alert-danger" role="alert"><%= flash[:delete] %></div>
+      <% if flash[:delete] || flash[:error]  %>
+        <div class="alert alert-danger" role="alert"><%= flash[:delete] %><%= flash[:error] %></div>
       <% end %>
       <div class="d-flex justify-content-center">
         <%= yield %>
