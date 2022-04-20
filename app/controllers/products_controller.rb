@@ -16,8 +16,12 @@ class ProductsController < ApplicationController
       redirect_to product_path @product
       flash[:notice] = "Product successfully created"
     else
+      msg = ""
       redirect_to new_product_path
-      flash[:error] = @product.errors.full_messages
+      @product.errors.full_messages.each do |m|
+        msg.concat(m).concat(" ")
+      end
+      flash[:error] = msg
     end
   end
 
@@ -32,8 +36,12 @@ class ProductsController < ApplicationController
       redirect_to product_path
       flash[:notice] = "Product successfully updated"
     else
-      flash[:error] = @product.errors.full_messages
       redirect_to edit_product_path
+      msg = ""
+      @product.errors.full_messages.each do |m|
+        msg.concat(m).concat(" ")
+      end
+      flash[:error] = msg
     end
   end
 
