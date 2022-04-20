@@ -1,3 +1,4 @@
+<%set_title_helper("#{@category.name}")%>
 <div class="row g-3 mt-3 m-4">
   <%@category.products.each do |p| %>
     <div class="card col-md-6 col-lg-4 col-xl-3 p-1" style="min-width:300px">
@@ -5,7 +6,7 @@
       </div>
       <div class="card-body">
         <div class="card-title text-truncate h4">
-          <%=link_to "#{p.p_name}", product_path(p), 
+          <%=link_to "#{p.p_name}", product_path(p.id), 
                       class:'text-decoration-none text-uppercase stretched-link'%>
         </div>
       </div>

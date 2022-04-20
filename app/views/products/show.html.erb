@@ -1,3 +1,4 @@
+<%set_title_helper("#{@product.p_name}")%>
 <div class="card col-12 col-md-12 col-lg-10 col-xl-8 p-1 shadow mt-3">
   <div class="card img bg-light" style="height:500px">
   </div>
@@ -18,7 +19,7 @@
       Cat : <%=@category.name%>
     </div>
   </div>
-  <%=link_to "Edit product",edit_product_path , class:"btn btn-primary mt-2"%>
-  <%= link_to 'Delete product', product_path(@product),
-  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},class:"btn btn-danger mt-2" %>
+  <%=link_to "Edit product", edit_product_path(@product) , class:"btn btn-primary mt-2"%>
+  <%= link_to 'Delete product', product_path(@product) ,
+              data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},class:"btn btn-danger mt-2" %>
 </div>
