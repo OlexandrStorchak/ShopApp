@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ShopApp</title>
+    <% set_title_helper if !content_for?(:title)%>
+    <title><%=yield :title%></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -64,7 +65,8 @@
           <div>
             <%=link_to 'Add category', new_product_category_path, class: ' btn btn-outline-secondary'%>
             <ul class="list-group">
-              <%@categories_list.each do |cat|%>
+              <%product_categories_list_helper%>
+              <%@categories.each do |cat|%>
                 <li class="list-group-item btn-outline-secondary">
                   <%=link_to "#{cat.name} | ( #{cat.products.count} )",
                                      product_category_path(cat), class:'btn' %></li>
