@@ -10,75 +10,11 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <!-- Navbar start -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-      <div class="container-fluid">
-        <%= link_to 'ShopApp', root_path, class: 'navbar-brand'%>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <div class="dropdown">
-                <a class="btn dropdown-toggle" href="<%=products_path%>" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                  Products
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="<%=products_path%>">All products</a></li>
-                  <li><a class="dropdown-item" href="<%=new_product_path%>">Add new product</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <div class="dropdown">
-                <a class="btn dropdown" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                  Categories
-                </a>
-              </div>
-            </li>
-          </ul>
-          <%= form_with url: search_path,class:'d-flex', method: :get do |form| %>
-            <%= form.text_field :search, class:'form-control me-2' %>
-            <%= form.submit "Search", class:'btn btn-outline-success' %>
-          <% end %>
-        </div>
-      </div>
-    </nav>
-    <!-- Navbar end -->
-    <!-- Flashing start -->
-    <div class="container-fluid">
-      <% if flash[:notice] %>
-        <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
-      <% end %>
-      <% if flash[:delete] || flash[:error]  %>
-        <div class="alert alert-danger" role="alert"><%= flash[:delete] %><%= flash[:error] %></div>
-      <% end %>
-      <!-- Flashing end -->
-      <!-- Sidebar for categories start -->
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Categories</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div>
-            <%=link_to 'Add category', new_product_category_path, class: ' btn btn-outline-secondary'%>
-            <ul class="list-group">
-              <%product_categories_list_helper%>
-              <%@categories.each do |cat|%>
-                <li class="list-group-item btn-outline-secondary">
-                  <%=link_to "#{cat.name} | ( #{cat.products.count} )",
-                                     product_category_path(cat), class:'btn' %></li>
-              <%end%>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- Sidebar for categories end -->
-      <div class="d-flex justify-content-center">
-        <%= yield %>
-      </div>
+    <%set_header_helper%>
+    <%=yield :header%>
+    <div class="d-flex justify-content-center">
+      <%= yield %>
     </div>
-  </body>
+  </div>
+</body>
 </html>
