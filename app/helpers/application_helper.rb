@@ -10,7 +10,7 @@ module ApplicationHelper
   def set_header_helper
     @categories = ProductCategory.all
     content_for :header do
-      render "header/header"
+      render partial: "header/header"
     end
   end
 end
