@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def log_in
     user = User.find_by(email: params["email"])
-    if user.authenticate(params["password_digest"])
+    if user.authenticate(params["password"])
       redirect_to root_path
       session[:login] = true
       flash[:notice] = "Login"
