@@ -1,0 +1,15 @@
+<div class="p-3 mt-5 shadow col-md-12 col-lg-10 col-xl-8">
+  <%=form_with model: @user, url: login_path(@user), method: :post do |user|%>
+    <div class="mb-3 ">
+      <%=user.label :product, "Email", class: 'form-label h5'%>
+      <%=user.email_field :email, required: true, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%=user.label :password, "Password",class: 'form-label h5'%>
+      <%=user.password_field :password, required: true, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%=user.submit "Log in", class: 'btn btn-primary col-12'%>
+    </div>
+  <%end%>
+</div>

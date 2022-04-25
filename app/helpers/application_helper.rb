@@ -13,4 +13,14 @@ module ApplicationHelper
       render partial: "header/header"
     end
   end
+
+  def set_user_helper
+    login = session[:login]
+    login ? "Logout" : "Login"
+  end
+
+  def set_login_button_color_helper
+    login = session[:login]
+    login ? "btn btn-danger" : "btn"
+  end
 end
