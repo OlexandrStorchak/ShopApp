@@ -7,13 +7,20 @@ class UsersController < ApplicationController
   end
 
   def log_in
-    redirect_to root_path
-    session[:login] = true
-    flash[:notice] = "Login"
+    user = User.find_by(email: params["email"])
+    if user.authenticate(params["password_digest"])
+      redirect_to root_path
+      session[:login] = true
+      flash[:notice] = "Login"
+    else
+      redirect_to users_path
+      session[:login] = false
+      flash[:error] = "No login"
+    end
   end
 
   def log_out
-    redirect_to users_path
+    redirect_to root_path
     session[:login] = false
     flash[:error] = "Logout"
   end
