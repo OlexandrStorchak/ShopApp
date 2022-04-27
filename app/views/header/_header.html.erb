@@ -39,13 +39,10 @@
   </div>
 </nav>
 <!-- Navbar end -->
-<!-- Flashing start -->
 <div class="container-fluid">
-  <% if flash[:notice] %>
-    <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
-  <% end %>
-  <% if flash[:delete] || flash[:error]  %>
-    <div class="alert alert-danger" role="alert"><%= flash[:delete] %><%= flash[:error] %></div>
+  <!-- Flashing start -->
+  <% if flash.any? %>
+    <%=header_flash_helper(flash)%>
   <% end %>
   <!-- Flashing end -->
   <!-- Sidebar for categories start -->

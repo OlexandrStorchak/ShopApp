@@ -14,14 +14,9 @@ class ProductsController < ApplicationController
     @product = Product.new(get_product_params)
     if @product.save
       redirect_to product_path @product
-      flash[:notice] = "Product successfully created"
+      flash[:green] = "Product successfully created"
     else
-      msg = ""
-      redirect_to new_product_path
-      @product.errors.full_messages.each do |m|
-        msg.concat(m).concat(" ")
-      end
-      flash[:error] = msg
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -34,27 +29,22 @@ class ProductsController < ApplicationController
   def update
     if @product.update(get_product_params)
       redirect_to product_path
-      flash[:notice] = "Product successfully updated"
+      flash[:green] = "Product successfully updated"
     else
-      redirect_to edit_product_path
-      msg = ""
-      @product.errors.full_messages.each do |m|
-        msg.concat(m).concat(" ")
-      end
-      flash[:error] = msg
+      render :edit
     end
   end
 
   def destroy
     if @product.destroy
       redirect_to products_path, status: :see_other
-      flash[:delete] = "Product successfully deleted"
+      flash[:red] = "Product successfully deleted"
     else
     end
   end
 
-  def product_not_found
-  end
+  #def product_not_found
+  #end
 
   def search
   end
@@ -62,7 +52,8 @@ class ProductsController < ApplicationController
   private
 
   def not_found
-    redirect_to product_not_found_path
+    redirect_to products_path
+    flash[:red] = "Incorect product id"
   end
 
   def get_product_params

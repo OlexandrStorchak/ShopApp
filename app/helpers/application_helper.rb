@@ -23,4 +23,10 @@ module ApplicationHelper
     login = session[:login]
     login ? "btn btn-danger" : "btn"
   end
+
+  def header_flash_helper(flash)
+    alert_style = { "green" => "alert alert-success", "red" => "alert alert-danger" }
+    render partial: "header/header_flash",
+           locals: { alert_style: alert_style[flash.keys.first], alert_text: flash[flash.keys.first] }
+  end
 end

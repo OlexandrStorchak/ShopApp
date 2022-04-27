@@ -2,11 +2,13 @@
   <%=form_with model: @product do |p|%>
     <div class="mb-3 ">
       <%=p.label :product, "Product name",class: 'form-label h5'%>
-      <%=p.text_field :p_name, required: true, minlength: 5, class: 'form-control' %>
+      <%=p.text_field :p_name, class: 'form-control' %>
+      <%=errors_form_helper(@product,:p_name)%>
     </div>
     <div class="mb-3">
       <%=p.label :product, "Product description",class: 'form-label h5'%>
-      <%=p.text_area :p_description, required: true, minlength: 5,size: "80x5", class: 'form-control' %>
+      <%=p.text_area :p_description, size: "80x5", class: 'form-control' %>
+      <%=errors_form_helper(@product,:p_description)%>
     </div>
     <div class="mb-3">
       <%=p.label :product, "Product category",class: 'form-label h5'%>
@@ -16,7 +18,8 @@
     </div>
     <div class="mb-3">
       <%=p.label :product, "Product price", class: 'form-label h5'%>
-      <%=p.number_field :p_price, required: true, class: 'form-control' %>
+      <%=p.number_field :p_price, step: :any, class: 'form-control' %>
+      <%=errors_form_helper(@product,:p_price)%>
     </div>
     <div class="mb-3">
       <%=p.submit "Save",class: 'btn btn-primary col-12'%>
