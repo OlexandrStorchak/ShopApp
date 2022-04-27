@@ -13,7 +13,7 @@ class ProductCategoriesController < ApplicationController
     @category = ProductCategory.new(get_product_categories_params)
     if @category.save!
       redirect_to product_category_path @category
-      flash[:notice] = "Category successfully created"
+      flash[:green] = "Category successfully created"
     else
       redirect_to new_product_category_path
     end
@@ -28,7 +28,7 @@ class ProductCategoriesController < ApplicationController
   def update
     if @category.update(get_product_categories_params)
       redirect_to product_category_path
-      flash[:notice] = "Category successfully updated"
+      flash[:green] = "Category successfully updated"
     else
       redirect_to edit_product_category_path
     end
@@ -37,7 +37,7 @@ class ProductCategoriesController < ApplicationController
   def destroy
     if @category.destroy
       redirect_to products_category_path, status: :see_other
-      flash[:delete] = "Category successfully deleted"
+      flash[:red] = "Category successfully deleted"
     else
     end
   end

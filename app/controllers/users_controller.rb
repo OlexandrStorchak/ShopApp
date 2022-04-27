@@ -11,22 +11,22 @@ class UsersController < ApplicationController
       if user.authenticate(params["password"])
         redirect_to root_path
         session[:login] = true
-        flash[:notice] = "Login"
+        flash[:green] = "Login"
       else
         redirect_to users_path
         session[:login] = false
-        flash[:error] = "Wrong password"
+        flash[:red] = "Wrong password"
       end
     else
       redirect_to users_path
       session[:login] = false
-      flash[:error] = "Wrong email"
+      flash[:red] = "Wrong email"
     end
   end
 
   def log_out
     redirect_to root_path
     session[:login] = false
-    flash[:error] = "Logout"
+    flash[:red] = "Logout"
   end
 end
