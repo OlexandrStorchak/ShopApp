@@ -2,7 +2,8 @@
   <%=form_with model: @category do |c|%>
     <div class="mb-3 ">
       <%=c.label :category, "Category name", class: 'form-label h5'%>
-      <%=c.text_field :name, required: true, minlength: 5, class: 'form-control' %>
+      <%=c.text_field :name, class: 'form-control' %>
+      <%=errors_form_helper(@category,:name)%>
     </div>
     <div class="mb-3">
       <%=c.submit "Save",class: 'btn btn-primary col-12'%>

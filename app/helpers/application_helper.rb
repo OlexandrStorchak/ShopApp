@@ -24,6 +24,10 @@ module ApplicationHelper
     login ? "btn btn-danger" : "btn"
   end
 
+  def errors_form_helper(obj, column)
+    render partial: "layouts/errors", locals: {obj: obj, column: column } if obj.errors.where(column).any?
+  end
+
   def header_flash_helper(flash)
     alert_style = { "green" => "alert alert-success", "red" => "alert alert-danger" }
     render partial: "header/header_flash",
