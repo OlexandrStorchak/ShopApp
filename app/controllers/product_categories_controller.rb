@@ -11,11 +11,11 @@ class ProductCategoriesController < ApplicationController
 
   def create
     @category = ProductCategory.new(get_product_categories_params)
-    if @category.save!
+    if @category.save
       redirect_to product_category_path @category
       flash[:green] = "Category successfully created"
     else
-      redirect_to new_product_category_path
+      render :new
     end
   end
 
