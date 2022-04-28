@@ -15,7 +15,7 @@ class ProductCategoriesController < ApplicationController
       redirect_to product_category_path @category
       flash[:green] = "Category successfully created"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
